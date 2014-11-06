@@ -95,11 +95,7 @@ public class Evento implements Comparable<Evento>{
 		if (participantes.contains(participante) || participantes.size() == getCapacidade()) {
 			return false;
 		} else {
-			if (participantes.add(participante)) {
-				return true;
-			} else {
-				return false;
-			}
+			return participantes.add(participante);
 		}
 	}
 

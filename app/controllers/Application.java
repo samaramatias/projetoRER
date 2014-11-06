@@ -181,7 +181,7 @@ public class Application extends Controller {
 		Evento evento = dao.findByEntityId(Evento.class, id);
 		
 		Usuario usuario = getUser(session("email"));
-		usuario.getEventos().remove(evento);
+		usuario.removerEvento(evento);
 		
 		dao.merge(usuario);
 		

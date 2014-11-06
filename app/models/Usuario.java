@@ -48,6 +48,11 @@ public class Usuario {
 	public boolean addEvento(Evento evento){
 		return eventos.contains(evento)? false : eventos.add(evento);
 	}
+	
+	public boolean removerEvento(Evento evento){
+		return eventos.remove(evento);
+	}
+	
 	public String getEmail() {
 		return email;
 	}
