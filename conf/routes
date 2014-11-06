@@ -1,0 +1,31 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+GET     /login                      controllers.Application.login()
+GET     /sair                       controllers.Application.sair()
+GET     /cadastrar/usuario          controllers.Application.cadastroUsuarioPage()
+POST    /cadastrar/usuario          controllers.Application.cadastrarUsuario()
+POST    /autenticar          		controllers.Application.autenticar()
+
+
+# Eventos
+GET		/eventos                    controllers.Application.eventosPage()
+GET		/meus-eventos               controllers.Application.meusEventosPage()
+GET		/cadastrar/evento			controllers.Application.cadastrarEventoPage()
+POST	/excluir/evento				controllers.Application.excluirEvento(id:Long)
+POST	/cadastrar/evento			controllers.Application.cadastrarEvento()
+POST	/cadastrar/participante		controllers.Application.participarDeEvento(email:String, id:Long)
+
+# Locais
+GET		/locais						controllers.Application.locaisPage()
+GET     /cadastrar/local			controllers.Application.cadastrarLocalPage()
+POST	/cadastrar/local			controllers.Application.cadastrarLocal()
+
+# Usuarios
+GET     /usuarios					controllers.Application.usuariosPage()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

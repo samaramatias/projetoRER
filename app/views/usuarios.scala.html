@@ -1,0 +1,61 @@
+@(titulo:String, usuario:models.Usuario)
+
+@main(titulo, usuario){
+
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+           
+            <ul class="nav nav-sidebar">
+              <li><a href="/">Início</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/eventos">Todos Eventos</a></li>
+            	<li><a href="/cadastrar/evento">Cadastrar Evento</a></li>
+            	<li ><a href="/meus-eventos">Meus Eventos</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/locais">Todos Locais</a></li>
+            	<li><a href="/cadastrar/local">Cadastrar Local</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li class="active"><a href="/usuarios">Todos Usuarios</a></li>
+            </ul>
+          
+        </div><!--/span-->
+        
+        <div class="col-sm-9 col-md-10 main">
+          
+
+          <h2 class="sub-header">Usuarios</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Eventos</th>
+                </tr>
+              </thead>
+              <tbody>
+              	@for(user <- controllers.Application.getUsuarios){
+                <tr>
+	                
+	                  <td>@user.getNome</td>
+	                  <td>@user.getEmail</td>
+	                  <td>@user.getEventos.size</td>	              	 
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+      </div><!--/row-->
+	</div>
+</div><!--/.container-->
+}

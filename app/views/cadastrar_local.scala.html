@@ -1,0 +1,76 @@
+@(titulo:String, usuario:models.Usuario)
+
+@main(titulo, usuario){
+
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+           
+            <ul class="nav nav-sidebar">
+              <li><a href="/">Início</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/eventos">Todos Eventos</a></li>
+            	<li><a href="/cadastrar/evento">Cadastrar Evento</a></li>
+            	<li><a href="/meus-eventos">Meus Eventos</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/locais">Todos Locais</a></li>
+            	<li class="active"><a href="/cadastrar/local">Cadastrar Local</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/usuarios">Todos Usuarios</a></li>
+            </ul>
+          
+        </div><!--/span-->
+        
+        <div class="col-sm-9 col-md-10 main">
+        	<h2 class="sub-header">Cadastrar Novo Local</h2>
+        	
+        	<div class="panel">
+        		<div class="panel-body">
+        			<div class="form-group">
+        				<form action="/cadastrar/local" method="post">
+	        				<div class=" form-group row">
+								<div class="col-md-10">
+									<label for="exampleInputEmail1">Nome</label>
+									<input name="NOME" type="text" class="form-control" placeholder="Nome do Local" maxlength="40" required>
+								</div>
+													  			
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-10">
+									<label for="exampleInputEmail1">Descrição</label>
+									<textarea name="DESCRICAO" placeholder="Descrição do local" class="form-control" rows="6" maxlength="250" required></textarea>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-2">
+									<label for="exampleInputEmail1">Capacidade</label>
+									<input name="CAPACIDADE" type="number" min="1" max="10000" step="1" class="form-control"  required>
+								</div>
+							</div>
+	
+	
+							<div class="form-group row">
+								<div class="col-md-10 center" align="center">
+									<button type="submit" class="btn btn-success" >
+										<span class="glyphicon glyphicon-floppy-disk"></span> Cadastrar Local
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+}

@@ -1,0 +1,114 @@
+@(titulo:String, form:Form[controllers.Application.Temas], usuario:models.Usuario)
+
+@main(titulo, usuario){
+
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+           
+            <ul class="nav nav-sidebar">
+              <li><a href="/">Início</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/eventos">Todos Eventos</a></li>
+            	<li class="active"><a href="/cadastrar/evento">Cadastrar Evento</a></li>
+            	<li><a href="/meus-eventos">Meus Eventos</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/locais">Todos Locais</a></li>
+            	<li><a href="/cadastrar/local">Cadastrar Local</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/usuarios">Todos Usuarios</a></li>
+            </ul>
+          
+        </div><!--/span-->
+        
+        <div class="col-sm-9 col-md-10 main">
+        	<h2 class="sub-header">Cadastrar Novo Evento</h2>
+        	
+        	<div class="panel">
+        		<div class="panel-body">
+        			<div class="form-group">
+        				<form action="/cadastrar/evento" method="post">
+        				<div class=" form-group row">
+							<div class="col-md-7">
+								<input name="TITULO" type="text" class="form-control" placeholder="Titulo do evento" maxlength="40" required>
+							</div>
+												
+							<div class="col-md-3">
+								<input name="DATA" type="date" class="form-control"  required>
+							</div>
+									  			
+						</div>
+				
+						<div class=" form-group row">
+							<div class="col-md-10">
+								<select name="LOCALE" class="form-control" required>
+									@for(local <- controllers.Application.getLocais()){
+										<option value="@local.getId()" >@local.toString()</option>
+									}
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<div class="col-md-10">
+								<textarea name="DESCRICAO" placeholder="Descricao do evento" class="form-control" rows="6" maxlength="250" required></textarea>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<div class="col-md-10">
+								<div class="btn-group" data-toggle="buttons">
+								
+										<label class="btn btn-primary">
+											<input name="bd" type="checkbox" autocomplete="off">
+												<span class="glyphicon glyphicon-file"></span> Banco de Dados
+										</label>
+										
+										<label class="btn btn-primary">
+											<input name="web" type="checkbox" autocomplete="off">
+												<span class="glyphicon glyphicon-file"></span> Web
+										</label>
+										
+										<label class="btn btn-primary">
+											<input name="android" type="checkbox" autocomplete="off">
+												<span class="glyphicon glyphicon-file"></span> Android
+										</label>
+										
+										<label class="btn btn-primary">
+											<input name="nuvem" type="checkbox" autocomplete="off">
+												<span class="glyphicon glyphicon-file"></span> Computação em Nuvem
+										</label>
+										
+										<label class="btn btn-primary">
+											<input name="programacao" type="checkbox" autocomplete="off">
+												<span class="glyphicon glyphicon-file"></span> Programação
+										</label>
+									 
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group row">
+							<div class="col-md-10 center" align="center">
+								<button type="submit" class="btn btn-success" >
+									<span class="glyphicon glyphicon-floppy-disk"></span> Cadastrar Evento
+								</button>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+}

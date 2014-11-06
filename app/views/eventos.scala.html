@@ -1,0 +1,196 @@
+@(titulo:String, usuario:models.Usuario)
+
+@main(titulo, usuario){
+
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+           
+            <ul class="nav nav-sidebar">
+              <li><a href="/">Início</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li class="active"><a href="/eventos">Todos Eventos</a></li>
+            	<li><a href="/cadastrar/evento">Cadastrar Evento</a></li>
+            	<li><a href="/meus-eventos">Meus Eventos</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/locais">Todos Locais</a></li>
+            	<li><a href="/cadastrar/local">Cadastrar Local</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/usuarios">Todos Usuarios</a></li>
+            </ul>
+          
+        </div><!--/span-->
+        
+        <div class="col-sm-9 col-md-10 main">
+          
+
+          <h2 class="sub-header">Eventos</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Titulo</th>
+                  <th>Descrição</th>
+                  
+                  <th>Vagas</th>
+                  <th>Temas</th>
+                  <th>Inscritos</th>
+                  <th>Inscrição</th>
+                </tr>
+              </thead>
+              <tbody>
+              	@for(evento <- controllers.Application.getEventos){
+                <tr>
+	                  <td>@evento.getData.format("dd/MM/yy")</td>
+	                  <td>@evento.getTitulo</td>
+	                  <td>@evento.getDescricao</td>
+	                  
+	                  <td>@evento.getVagas</td>
+	                  <td>
+		                  @for(tema <- evento.getTemas){
+		                  	<span class="label label-danger">@tema</span>
+		                  }
+	                  </td>
+	                  
+	                  <td>
+		                 <button name="@evento.getId()" type="button" class="btn btn-primary btn-xs"
+								data-toggle="modal" data-target="#visualizar-@evento.getId()">Visualizar</button>
+								
+								<div class="modal fade" id="visualizar-@evento.getId()">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">
+													<span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span>
+												</button>
+												<h4 class="modal-title">Participantes do Evento</h4>
+											</div>
+								
+											<div class="modal-body">
+												<div class="panel-body">
+													<table class="table table-striped">
+														<thead>
+															<tr>
+																<th width="40%">Nome</th>
+																<th width="50%">E-mail</th>
+															</tr>
+														</thead>
+														<tbody>
+															@for(participante <- evento.getParticipantes()){
+																<tr>
+																	<td>@participante.getNome()</td>
+																	<td>@participante.getEmail()</td>
+																</tr>
+															}
+														</tbody>
+													</table>
+												</div>
+											</div>
+								
+											<div class="modal-footer">
+												<button type="button" class="btn btn-primary" data-dismiss="modal">Sair</button>
+								
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<script>
+									$(function() {
+										$("#visualizar-@evento.getId()").dialog({
+											modal : true,
+											buttons : {
+												Ok : function() {
+													$(this).dialog("close");
+												}
+											}
+										});
+									});
+								</script>
+	                  </td>
+	                  
+	                  <td>
+		                  
+		                  <button name="@evento.getId" type="button" class="btn btn-primary btn-xs"
+									data-toggle="modal" data-target="#participar-evento-@evento.getId()">Participar</button>
+								
+								<div class="modal fade" id="participar-evento-@evento.getId()">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">
+													<span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span>
+												</button>
+												<h4 class="modal-title">
+													Confirmar Participação
+												</h4>
+											</div>
+								
+											<div class="modal-body">
+												<div class="panel-body">
+													<form class="form-horizontal" role="form" method="post"
+														action="@routes.Application.participarDeEvento(usuario.getEmail(), evento.getId())">
+														<div class="form-group">
+															<label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
+															<div class="col-sm-9">
+																<input type="text" name="nome" class="form-control"
+																	id="inputEmail3" value="@usuario.getNome()" readonly="readonly">
+															</div>
+														</div>
+								
+														<div class="form-group">
+															<label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
+															<div class="col-sm-9">
+																<input type="text" name="email" class="form-control"
+																	id="inputEmail3" value="@usuario.getEmail()" readonly="readonly">
+															</div>
+														</div>
+														
+														<div class="modal-footer">
+															<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+															<button type="submit" class="btn btn-success">Confirmar</button>
+											
+														</div>
+													</form>
+												</div>
+											</div>
+								
+											
+										</div>
+									</div>
+								</div>
+			
+								<script>
+									$(function() {
+										$("#participar-evento-@evento.getId()").dialog({
+											modal : true,
+											buttons : {
+												Ok : function() {
+													$(this).dialog("close");
+												}
+											}
+										});
+									});
+								</script>
+		                  
+	                  </td>
+	              	 
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+      </div><!--/row-->
+	</div>
+</div><!--/.container-->
+}
