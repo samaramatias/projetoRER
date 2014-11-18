@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Vendor: org.scala-sbt
+Implementation-Title: Launcher
+Implementation-Version: 0.13.5
+Implementation-Vendor-Id: org.scala-sbt
+Specification-Vendor: org.scala-sbt
+Specification-Title: Launcher
+Specification-Version: 0.13.5
+Main-Class: xsbt.boot.Boot
+

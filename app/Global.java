@@ -101,27 +101,27 @@ public class Global extends GlobalSettings {
 
 		Local local1 = (Local) persist(new Local("UFCG",
 				"Centro de Extenção José Farias Nóbrega", 100));
-		Local local2 = (Local) persist(new Local("FACISA", "Audutorio", 50));
+		Local local2 = (Local) persist(new Local("FACISA", "Auditorio", 50));
 		Local local3 = (Local) persist(new Local("Fiep",
 				"Auditorio de Reuniões", 20));
 
 		try {
 			Calendar d = new GregorianCalendar(2014, 12, 28);
-			u.add((Evento) persist(new Evento("Teste", "Colocar", d.getTime(),local1)));
+			u.add((Evento) persist(new Evento("App Mobile", "Evento destinado a desenvolvimento para dispositivos móveis", d.getTime(),local1)));
 			
 			Evento evento = u.get(0);
 			evento.addTema(Tema.ANDROID);
 			dao.merge(evento);
 			
 			d = new GregorianCalendar(2015, 04, 30);
-			u.add((Evento) persist(new Evento("Falta", "colocar", d.getTime(),local1)));
+			u.add((Evento) persist(new Evento("Web Semântica", "Novas tendencias e cooperação", d.getTime(),local1)));
 			
 			evento = u.get(1);
 			evento.addTema(Tema.WEB);
 			dao.merge(evento);
 			
 			d = new GregorianCalendar(2015, 02, 05);
-			u.add((Evento) persist(new Evento("Tem que colocar", "descricao", d
+			u.add((Evento) persist(new Evento("Bancos de Dados Distribuídos", "Primeiro contato com esta tecnologia", d
 					.getTime(), local2)));
 			
 			evento = u.get(2);
@@ -129,22 +129,21 @@ public class Global extends GlobalSettings {
 			dao.merge(evento);
 			
 			d = new GregorianCalendar(2015, 03, 10);
-			u.add((Evento) persist(new Evento("Nao esquecer de colocar","descricao", d.getTime(), local2)));
+			u.add((Evento) persist(new Evento("Cloud Computing","Desafios em segurança de dados", d.getTime(), local2)));
 			
 			evento = u.get(3);
 			evento.addTema(Tema.COMPUTACAO_EM_NUVEM);
 			dao.merge(evento);
 			
 			d = new GregorianCalendar(2015, 01, 13);
-			u.add((Evento) persist(new Evento("Importante colocar",
-					"descricao", d.getTime(), local3)));
+			u.add((Evento) persist(new Evento("Novas Linguagens", "Desafios com novas linguagens", d.getTime(), local3)));
 			
 			evento = u.get(4);
 			evento.addTema(Tema.PROGRAMACAO);
 			dao.merge(evento);
 			
 			d = new GregorianCalendar(2015, 04, 20);
-			u.add((Evento) persist(new Evento("eh so um teste", "descricao", d
+			u.add((Evento) persist(new Evento("Entretenimento", "Stream de dados", d
 					.getTime(), local3)));
 			
 			evento = u.get(5);
@@ -153,7 +152,7 @@ public class Global extends GlobalSettings {
 			dao.merge(evento);
 			
 			d = new GregorianCalendar(2015, 05, 27);
-			u.add((Evento) persist(new Evento("coloquei", "descricao", d
+			u.add((Evento) persist(new Evento("Cascata", "Novas tendências em HTML5 e CSS3", d
 					.getTime(), local1)));
 
 			evento = u.get(6);

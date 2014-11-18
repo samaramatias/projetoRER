@@ -1,0 +1,49 @@
+@(titulo:String, usuario:models.Usuario)
+
+@main(titulo, usuario){
+
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+           
+            <ul class="nav nav-sidebar">
+              <li class="active"><a href="/">Início</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/eventos">Todos Eventos</a></li>
+            	<li><a href="/cadastrar/evento">Cadastrar Evento</a></li>
+            	<li><a href="/meus-eventos">Meus Eventos</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/locais">Todos Locais</a></li>
+            	<li><a href="/cadastrar/local">Cadastrar Local</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+            	<li><a href="/usuarios">Todos Usuarios</a></li>
+            </ul>
+          
+        </div><!--/span-->
+        
+        <div class="col-sm-9 col-md-10 main">
+          
+          <!--toggle sidebar button-->
+          <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+          </p>
+          
+		  <h1 class="page-header">Seja Bem-vindo ao Hackfest</h1>
+
+          <h2 class="sub-header">
+         		Se você gosta de tecnologia, fique por dentro dos eventos que
+         		reúnem programadores a fim de construir coisas interessantes a cerca de um tema </h2>
+		</h2>
+
+      </div><!--/row-->
+	</div>
+</div><!--/.container-->
+}
